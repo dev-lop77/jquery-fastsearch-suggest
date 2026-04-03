@@ -2,7 +2,7 @@
 
 A lightweight jQuery autocomplete / type-ahead plugin. Clean, modern look with no external dependencies beyond jQuery.
 
-**Version:** 0.2.0
+**Version:** 0.2.1
 
 ---
 
@@ -51,7 +51,7 @@ $('#my-input').fastsearchSuggest({
 });
 ```
 
-The file is fetched once when the plugin initialises and then filtered locally like the inline array.
+The file is fetched once when the plugin initialises and then filtered locally like the inline array. Keystrokes typed before the fetch completes are queued and suggestions appear automatically once the data arrives.
 
 ### Live AJAX endpoint
 
@@ -101,7 +101,7 @@ $('#my-input').fastsearchSuggest('destroy');
 
 | Key | Action |
 |-----|--------|
-| Tab / → | Accept ghost-text suggestion |
+| Tab / → | Accept ghost-text suggestion (→ only when cursor is at end of input) |
 | ↑ / ↓ | Navigate the dropdown |
 | Enter | Select the highlighted dropdown item (or accept ghost text) |
 | Escape | Dismiss the ghost text and close the dropdown |
@@ -128,7 +128,7 @@ Override these in your own stylesheet to theme the plugin:
 npm install        # install devDependencies
 npm run lint       # JSHint on src/
 npm run build      # compile src/ → dist/
-npm run release    # create a versioned ZIP in release/
+npm run release    # create a versioned .tar.gz archive in release/
 ```
 
 ---
