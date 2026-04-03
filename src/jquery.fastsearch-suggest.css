@@ -1,0 +1,68 @@
+/* jquery.fastsearch-suggest v0.2.1 */
+
+.fss-wrapper {
+  position: relative;
+  display: inline-block;
+  background: #fff;
+}
+
+.fss-wrapper input {
+  box-sizing: border-box;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  background: transparent;
+}
+
+/* ── Ghost text (type-ahead overlay) ─────────────────────────────────────── */
+
+.fss-ghost {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  box-sizing: border-box;
+  color: #9ca3af;
+  pointer-events: none;
+  white-space: pre;
+  overflow: hidden;
+}
+
+/* ── Dropdown ─────────────────────────────────────────────────────────────── */
+
+.fss-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  margin: 2px 0 0;
+  padding: 4px 0;
+  list-style: none;
+  background: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.10);
+  overflow: hidden;
+}
+
+/* ── Items ────────────────────────────────────────────────────────────────── */
+
+.fss-item {
+  padding: 8px 14px;
+  font-size: 0.95em;
+  color: #111827;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: background 0.1s;
+}
+
+.fss-item:hover,
+.fss-item.fss-active {
+  background: #f3f4f6;
+  color: #1d4ed8;
+}

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fastsearch-suggest v0.2.1 — Demo</title>
+  <link rel="stylesheet" href="../dist/jquery.fastsearch-suggest.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      font-family: system-ui, sans-serif;
+      background: #f9fafb;
+      color: #111827;
+      margin: 0;
+      padding: 40px 24px;
+    }
+
+    h1 {
+      font-size: 1.4rem;
+      margin: 0 0 4px;
+    }
+
+    p.subtitle {
+      color: #6b7280;
+      margin: 0 0 40px;
+      font-size: 0.9rem;
+    }
+
+    .demo-section {
+      max-width: 400px;
+      margin-bottom: 40px;
+    }
+
+    .demo-section h2 {
+      font-size: 1rem;
+      margin: 0 0 6px;
+    }
+
+    .demo-section p {
+      font-size: 0.85rem;
+      color: #6b7280;
+      margin: 0 0 10px;
+    }
+
+    .demo-section .fss-wrapper,
+    .demo-section input[type="text"] {
+      width: 100%;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 9px 13px;
+      font-size: 1rem;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+
+    input[type="text"]:focus {
+      border-color: #6366f1;
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+    }
+
+    #selected-output {
+      margin-top: 8px;
+      font-size: 0.85rem;
+      color: #374151;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>fastsearch-suggest</h1>
+  <p class="subtitle">jQuery autocomplete / type-ahead plugin — v0.2.1</p>
+
+  <!-- ── Static data ── -->
+  <div class="demo-section">
+    <h2>Static data (local array)</h2>
+    <p>Type at least 2 characters. Data is filtered with a case-insensitive prefix match.</p>
+    <input type="text" id="demo-static" placeholder="e.g. ja…">
+    <div id="selected-output"></div>
+  </div>
+
+  <!-- ── AJAX ── -->
+  <div class="demo-section">
+    <h2>AJAX data source</h2>
+    <p>Queries <code>/suggest?q={typed}</code> (debounced). Replace the URL with your endpoint.</p>
+    <input type="text" id="demo-ajax" placeholder="Start typing…">
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="../dist/jquery.fastsearch-suggest.js"></script>
+  <script>
+    $(function () {
+
+      // ── Static data demo ───────────────────────────────────────────────────
+      var languages = [
+        'JavaScript', 'Java', 'Julia', 'Kotlin', 'Go', 'Rust', 'Ruby',
+        'Python', 'PHP', 'Perl', 'Scala', 'Swift', 'C', 'C++', 'C#',
+        'TypeScript', 'Haskell', 'Lua', 'Elixir', 'Erlang', 'Dart',
+        'R', 'MATLAB', 'Fortran', 'COBOL'
+      ];
+
+      $('#demo-static').fastsearchSuggest({
+        data:           languages,
+        minChars:       2,
+        maxSuggestions: 5,
+        matchLastWord: true,
+        onSelect: function (value) {
+          $('#selected-output').text('Selected: ' + value);
+        }
+      });
+
+      // ── AJAX demo ──────────────────────────────────────────────────────────
+      // Replace url with your actual endpoint that returns a JSON string array.
+      $('#demo-ajax').fastsearchSuggest({
+        url:            '/suggest',
+        param:          'q',
+        minChars:       2,
+        maxSuggestions: 5,
+        debounce:       300
+      });
+
+    });
+  </script>
+</body>
+</html>
