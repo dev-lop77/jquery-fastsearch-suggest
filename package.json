@@ -1,6 +1,6 @@
 {
   "name": "jquery-fastsearch-suggest",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A jQuery autocomplete / type-ahead plugin with ghost-text completion and a suggestion dropdown.",
   "main": "dist/jquery.fastsearch-suggest.js",
   "scripts": {

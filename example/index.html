@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>fastsearch-suggest v0.2.1 — Demo</title>
+  <title>fastsearch-suggest v0.2.2 — Demo</title>
   <link rel="stylesheet" href="../dist/jquery.fastsearch-suggest.css">
   <style>
     *, *::before, *::after { box-sizing: border-box; }
@@ -73,7 +73,7 @@
 <body>
 
   <h1>fastsearch-suggest</h1>
-  <p class="subtitle">jQuery autocomplete / type-ahead plugin — v0.2.1</p>
+  <p class="subtitle">jQuery autocomplete / type-ahead plugin — v0.2.2</p>
 
   <!-- ── Static data ── -->
   <div class="demo-section">
@@ -81,6 +81,13 @@
     <p>Type at least 2 characters. Data is filtered with a case-insensitive prefix match.</p>
     <input type="text" id="demo-static" placeholder="e.g. ja…">
     <div id="selected-output"></div>
+  </div>
+
+  <!-- ── Local JSON file ── -->
+  <div class="demo-section">
+    <h2>Local JSON file (<code>dataUrl</code>)</h2>
+    <p>Fetches <code>wordlist.json</code> once at init, then filters locally. Try typing a word.</p>
+    <input type="text" id="demo-dataurl" placeholder="e.g. abs…">
   </div>
 
   <!-- ── AJAX ── -->
@@ -111,6 +118,13 @@
         onSelect: function (value) {
           $('#selected-output').text('Selected: ' + value);
         }
+      });
+
+      // ── dataUrl demo ───────────────────────────────────────────────────────
+      $('#demo-dataurl').fastsearchSuggest({
+        dataUrl:        'wordlist.json',
+        minChars:       2,
+        maxSuggestions: 5
       });
 
       // ── AJAX demo ──────────────────────────────────────────────────────────

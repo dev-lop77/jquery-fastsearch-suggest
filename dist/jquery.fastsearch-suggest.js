@@ -207,6 +207,11 @@
         } else if (settings.dataUrl) {
           pendingInput = { token, fullInput };
         } else if (settings.url) {
+          var currentGhost = $wrapper.find(".fss-ghost").text();
+          if (currentGhost && currentGhost.indexOf(fullInput) !== 0) {
+            _clearGhost($input);
+          }
+          _hideDropdown($wrapper);
           ajaxSuggest(token, fullInput);
         }
       });

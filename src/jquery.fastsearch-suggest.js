@@ -1,4 +1,4 @@
-/* jquery.fastsearch-suggest v0.2.1 */
+/* jquery.fastsearch-suggest v0.2.2 */
 (function ($) {
 
   var defaults = {
@@ -250,6 +250,11 @@
         } else if (settings.dataUrl) {
           pendingInput = { token: token, fullInput: fullInput };
         } else if (settings.url) {
+          var currentGhost = $wrapper.find('.fss-ghost').text();
+          if (currentGhost && currentGhost.indexOf(fullInput) !== 0) {
+            _clearGhost($input);
+          }
+          _hideDropdown($wrapper);
           ajaxSuggest(token, fullInput);
         }
       });

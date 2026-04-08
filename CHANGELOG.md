@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.2.2] - 2026-04-08
+
+### Fixed
+- Stale ghost text in AJAX mode: ghost suggestion now clears immediately on new input when it no longer matches the typed text, instead of lingering during debounce + request time
+- Stale dropdown in AJAX mode: dropdown is hidden on new input to prevent showing outdated suggestions while waiting for fresh results
+
 ## [0.2.1] - 2026-04-03
 
 ### Fixed
